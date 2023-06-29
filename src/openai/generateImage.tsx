@@ -11,11 +11,12 @@ import { Keys, getKey } from '../openai/index.js'
 let _openai: OpenAIApi
 
 function _create(apiKey: string | undefined, organization: string | undefined) {
-  const configuration = new Configuration({
+  const config = new Configuration({
     apiKey: apiKey ?? getKey(Keys.OPENAI_API_KEY),
     organization: organization ?? getKey(Keys.OPENAI_ORG_ID),
   })
-  _openai = new OpenAIApi(configuration)
+  if (!config.apiKey || !config.organization) return null
+  _openai = new OpenAIApi(config)
 }
 
 
