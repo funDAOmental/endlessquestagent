@@ -1,8 +1,9 @@
+import React from 'react'
 import { useEffect, useMemo, useState } from 'react'
 import { ChatCompletionRequestMessageRoleEnum } from 'openai'
 import { useDocument, QuestMessagesDoc } from 'hyperbox-sdk'
-import { ChatHistory } from '../openai'
-import { ChatRequest } from '../components'
+import { ChatHistory } from '../openai/index.js'
+import { ChatRequest } from '../components/index.js'
 
 export const ChatDialog = ({
   // @ts-ignore
@@ -12,7 +13,7 @@ export const ChatDialog = ({
   playerName = 'Player',
   isChatting = false,
   onStopChatting = () => { },
-}) => {
+}): React.JSX.Element => {
   const [history, setHistory] = useState<ChatHistory>([])
   const [prompt, setPrompt] = useState('')
   const [isRequesting, setIsRequesting] = useState(false)

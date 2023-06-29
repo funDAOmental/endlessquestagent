@@ -1,5 +1,5 @@
 import Cookies from 'universal-cookie'
-import { GPTModel } from '../openai'
+import { GPTModel } from '../openai/index.js'
 
 export enum Keys {
   OPENAI_API_KEY = 'OPENAI_API_KEY',

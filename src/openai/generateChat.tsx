@@ -3,8 +3,8 @@ import {
   OpenAIApi,
   ChatCompletionRequestMessage,
   ChatCompletionRequestMessageRoleEnum,
- } from 'openai'
-import { Keys, getKey } from '../openai'
+} from 'openai'
+import { Keys, getKey } from '../openai/index.js'
 
 //-----------------------
 // OPenAI Client

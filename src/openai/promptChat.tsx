@@ -3,8 +3,8 @@ import {
   GPTModel,
   ChatHistory,
   generateChat,
-} from '../openai'
-import { prompts } from '../prompts'
+} from '../openai/index.js'
+import { prompts } from '../prompts/index.js'
 
 export interface PromptAgentOptions {
   gptModel: GPTModel,

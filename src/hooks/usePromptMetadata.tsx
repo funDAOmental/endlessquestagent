@@ -3,7 +3,7 @@ import {
   promptMetadata,
   PromptMetadataOptions,
   MetadataType,
-} from '../openai'
+} from '../openai/index.js'
 
 export const usePromptMetadata = (options: PromptMetadataOptions) => {
   const [isWaiting, setIsWaiting] = useState<boolean>(false)

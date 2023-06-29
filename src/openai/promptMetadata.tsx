@@ -3,8 +3,8 @@ import { Terrain, TerrainNames, Gem, GemNames } from '@rsodre/crawler-data'
 import {
   GPTModel,
   generateChat,
-} from './generateChat'
-import { prompts } from '../prompts'
+} from '../openai/index.js'
+import { prompts } from '../prompts/index.js'
 
 // types must match Prompts commands
 export enum MetadataType {

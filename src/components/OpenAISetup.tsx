@@ -1,9 +1,13 @@
+import React from 'react'
 import { useCookies } from 'react-cookie'
-import { Keys, GPTModel } from '../openai'
+import {
+  Keys,
+  GPTModel,
+} from '../openai/index.js'
 
 export const OpenAISetup = ({
   className = '',
-}) => {
+}): React.JSX.Element => {
   return (
     <div className={`ChatBody ${className}`}>
       <p>Setup your OpenAI keys (cookies)</p>
@@ -23,7 +27,7 @@ type KeySetupProps = {
 const KeySetup = ({
   keyName,
   prefix,
-}: KeySetupProps) => {
+}: KeySetupProps): React.JSX.Element => {
   const [cookies, setCookie] = useCookies(Object.values(Keys))
 
   const isValid = cookies[keyName] && cookies[keyName].startsWith(prefix)
@@ -52,7 +56,7 @@ const KeySetup = ({
   )
 }
 
-const ModelSetup = () => {
+const ModelSetup = (): React.JSX.Element => {
   const [cookies, setCookie] = useCookies([Keys.GPT_MODEL])
 
   const isGPT3 = cookies[Keys.GPT_MODEL] == GPTModel.GPT3

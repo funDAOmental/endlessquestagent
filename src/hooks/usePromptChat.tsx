@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import {
   ChatHistory,
   promptChat, PromptAgentOptions,
-} from '../openai'
+} from '../openai/index.js'
 
 export const usePromptChat = (options: PromptAgentOptions) => {
   const [isWaiting, setIsWaiting] = useState<boolean>(true)

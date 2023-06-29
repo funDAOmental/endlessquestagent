@@ -1,10 +1,12 @@
-import { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import {
   Keys, getKey,
   ChatHistory,
   PromptAgentOptions,
-} from '../openai'
-import { usePromptChat } from '../hooks'
+} from '../openai/index.js'
+import {
+  usePromptChat,
+} from '../hooks/index.js'
 
 
 interface ChatRequestProps {
@@ -19,7 +21,7 @@ export const ChatRequest = ({
   previousHistory,
   agentMetadata,
   onDone,
-}: ChatRequestProps) => {
+}: ChatRequestProps): React.JSX.Element => {
 
   const gptModel = getKey(Keys.GPT_MODEL)
 

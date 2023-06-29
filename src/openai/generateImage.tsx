@@ -2,7 +2,7 @@ import {
   Configuration,
   OpenAIApi,
 } from 'openai'
-import { Keys, getKey } from '../openai'
+import { Keys, getKey } from '../openai/index.js'
 
 //-----------------------
 // OPenAI Client
