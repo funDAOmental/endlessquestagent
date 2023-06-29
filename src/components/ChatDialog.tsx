@@ -49,9 +49,11 @@ export const ChatDialog = ({
     let result = []
     for (let i = isHalted ? 0 : 4; i < history.length; ++i) {
       const h = history[i]
-      // const isAgent = (h.role == ChatCompletionRequestMessageRoleEnum.Assistant)
-      // const className = isAgent ? 'ChatAgentTopic' : 'ChatUserTopic'
-      result.push(_makeTopic(`t_${i}`, h.role, h.content))
+      if (h.content) {
+        // const isAgent = (h.role == ChatCompletionRequestMessageRoleEnum.Assistant)
+        // const className = isAgent ? 'ChatAgentTopic' : 'ChatUserTopic'
+        result.push(_makeTopic(`t_${i}`, h.role, h.content))
+      }
     }
     return result
   }, [history])

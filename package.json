@@ -7,7 +7,7 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "prepare": "yarn build",
+    "prepare": "npm run build",
     "prebuild": "rm -rf tsconfig.tsbuildinfo dist/",
     "build": "tsc -p tsconfig.json",
     "postbuild": "cp -R src/styles dist/",
