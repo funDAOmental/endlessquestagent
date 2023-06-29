@@ -7,9 +7,10 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "clean": "rm -rf tsconfig.tsbuildinfo dist/",
-    "build": "npm run clean && tsc -p tsconfig.json && npm run post",
-    "post": "cp -R src/styles dist/",
+    "prepare": "yarn build",
+    "prebuild": "rm -rf tsconfig.tsbuildinfo dist/",
+    "build": "tsc -p tsconfig.json",
+    "postbuild": "cp -R src/styles dist/",
     "watch": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1",
     "link": "npm file:../hyperbox-sdk",
