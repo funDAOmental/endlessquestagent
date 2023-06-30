@@ -37,10 +37,10 @@ export const ChatDialog = ({
 
   const _makeTopic = (key: string, role: ChatCompletionRequestMessageRoleEnum, content: string) => {
     const isAgent = (role == ChatCompletionRequestMessageRoleEnum.Assistant)
-    const className = isAgent ? 'ChatAgentTopic' : 'ChatUserTopic'
+    const className = isAgent ? 'QuestChatAgentTopic' : 'QuestChatUserTopic'
     return (
       <div key={key} className={className}>
-        <div className='ChatTitle'>{isAgent ? agentName : playerName}</div>
+        <div className='QuestChatTitle'>{isAgent ? agentName : playerName}</div>
         <div>{content}</div>
       </div>
     )
@@ -52,7 +52,7 @@ export const ChatDialog = ({
       const h = history[i]
       if (h.content) {
         // const isAgent = (h.role == ChatCompletionRequestMessageRoleEnum.Assistant)
-        // const className = isAgent ? 'ChatAgentTopic' : 'ChatUserTopic'
+        // const className = isAgent ? 'QuestChatAgentTopic' : 'QuestChatUserTopic'
         result.push(_makeTopic(`t_${i}`, h.role, h.content))
       }
     }
@@ -83,11 +83,11 @@ export const ChatDialog = ({
   if (!isChatting) return <></>
 
   return (
-    <div className='ChatBody ChatDialog'>
+    <div className='QuestChatBody QuestChatDialog'>
 
-      <div className='ChatContent'>
+      <div className='QuestChatContent'>
         {topics.length > 0 &&
-          <p className='ChatSmaller'>chat id: {timestamp}</p>
+          <p className='QuestChatSmaller'>chat id: {timestamp}</p>
         }
         {topics}
         {isRequesting &&
@@ -97,13 +97,13 @@ export const ChatDialog = ({
           </div>
         }
         {waitingToSubmit &&
-          <div className='ChatInfo'>{agentName} is waiting for your answer...</div>
+          <div className='QuestChatInfo'>{agentName} is waiting for your answer...</div>
         }
       </div>
 
-      <div className='ChatInputRow'>
-        <input disabled={isRequesting} className='ChatInput' value={prompt} onChange={(e) => setPrompt(e.target.value)}></input>
-        <button disabled={!canSubmit} className='ChatSubmit' onClick={() => _submit()}>Answer</button>
+      <div className='QuestChatInputRow'>
+        <input disabled={isRequesting} className='QuestChatReset QuestChatInputField' value={prompt} onChange={(e) => setPrompt(e.target.value)}></input>
+        <button disabled={!canSubmit} className='QuestChatReset QuestChatSubmitButton' onClick={() => _submit()}>Answer</button>
       </div>
 
     </div>

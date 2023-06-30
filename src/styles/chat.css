@@ -1,97 +1,101 @@
 :root {
-  --color-text: #fff;
-  --color-important: #fa0;
-  --color-valid: #4f4;
-  --color-invalid: #fa0;
-  --color-info: #aaa;
-  --color-bg: #000a;
-  --ui-border: 5px ridge var(--color-important);
+  --quest-chat-color-text: #fff;
+  --quest-chat-color-important: #fa0;
+  --quest-chat-color-valid: #4f4;
+  --quest-chat-color-invalid: #fa0;
+  --quest-chat-color-info: #aaa;
+  --quest-chat-color-bg: #000a;
+  --quest-chat-ui-border: 5px ridge var(--quest-chat-color-important);
 }
 
-.ChatImportant, .ChatTitle {
-  color: var(--color-important);
+.QuestChatImportant, .QuestChatTitle {
+  color: var(--quest-chat-color-important);
 }
 
-.ChatTitle {
+.QuestChatTitle {
   font-size: 120%;
 }
 
-.ChatSmaller {
+.QuestChatSmaller {
   font-size: 80%;
 }
 
-.ChatInfo {
-  color: var(--color-info);
+.QuestChatInfo {
+  color: var(--quest-chat-color-info);
 }
 
-.ChatValidKey {
-  color: var(--color-valid);
+.QuestChatValidKey {
+  color: var(--quest-chat-color-valid);
 }
 
-.ChatInvalidKey {
-  color: var(--color-invalid);
+.QuestChatInvalidKey {
+  color: var(--quest-chat-color-invalid);
 }
 
-.ChatClickable {
-  cursor: 'pointer';
-  pointer-events: 'all';
-  text-decoration: 'underline';
+.QuestChatClickable {
+  cursor: pointer;
+  pointer-events: all;
+  text-decoration: underline;
 }
 
-.ChatBody {
+.QuestChatBody {
   padding: 0.5em;
   margin: 0.5em;
-  background-color: var(--color-bg);
+  background-color: var(--quest-chat-color-bg);
   font-family: 'Noto Sans Mono', monospace;
   font-size: 12px;
 }
 
-.ChatDialog {
+.QuestChatDialog {
   width: 500px;
   height: 700px;
   padding: 0;
   margin: 0;
 }
 
-.ChatContent, .ChatInputRow {
-  border: var(--ui-border);
-  background-color: var(--color-bg);
+.QuestChatContent, .QuestChatInputRow {
+  border: var(--quest-chat-ui-border);
+  background-color: var(--quest-chat-color-bg);
   padding: 0.3em;
   box-sizing: border-box;
   width: 100%;
 }
 
-.ChatContent {
+.QuestChatContent {
   overflow-y: scroll;
   position: relative;
   height: 650px;
   padding: 1em;
 }
 
-.ChatInputRow {
+.QuestChatInputRow {
   height: 50px;
   padding: 0.5em;
   position: relative;
 }
 
-.ChatInput {
+.QuestChatReset {
+  all: revert;
+}
+
+.QuestChatInputField {
   position: absolute;
   left: 0.5em;
   width: calc(100% - 100px);
   height: 20px;
 }
 
-.ChatSubmit {
+.QuestChatSubmitButton {
   position: absolute;
   right: 0.5em;
   width: 70px;
   height: 25px;
 }
 
-.ChatUserTopic, .ChatAgentTopic {
+.QuestChatUserTopic, .QuestChatAgentTopic {
   margin-bottom: 1em;
 }
 
-.ChatAgentTopic {
+.QuestChatAgentTopic {
   background-color: #fff2;
 }

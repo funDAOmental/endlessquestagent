@@ -9,7 +9,7 @@ export const OpenAISetup = ({
   className = '',
 }): React.JSX.Element => {
   return (
-    <div className={`ChatBody ${className}`}>
+    <div className={`QuestChatBody ${className}`}>
       <p>Setup your OpenAI keys (cookies)</p>
       <p>⏺ <KeySetup keyName={Keys.OPENAI_API_KEY} prefix='sk-' /></p>
       <p>⏺ <KeySetup keyName={Keys.OPENAI_ORG_ID} prefix='org-' /></p>
@@ -42,14 +42,14 @@ const KeySetup = ({
       {keyName}:&nbsp;
       {isValid
         ? <>
-          <span className='ChatValidKey'>OK</span>
+          <span className='QuestChatValidKey'>OK</span>
           {' '}
-          (<span className='ChatInvalidKey ChatClickable' onClick={() => _setupCookie()}>edit</span>)
+          (<span className='QuestChatInvalidKey QuestChatClickable' onClick={() => _setupCookie()}>edit</span>)
         </>
         : <>
           <span className='invalidKeyStyle'>NOT SET</span>
           {' '}
-          (<span className='ChatInvalidKey ChatClickable' onClick={() => _setupCookie()}>edit</span>)
+          (<span className='QuestChatInvalidKey QuestChatClickable' onClick={() => _setupCookie()}>edit</span>)
         </>
       }
     </span>
@@ -69,9 +69,9 @@ const ModelSetup = (): React.JSX.Element => {
   return (
     <span>
       {Keys.GPT_MODEL}:&nbsp;
-      {isGPT3 ? <span className='ChatValidKey ChatClickable'>GPT3</span> : <span className='ChatClickable' onClick={() => _setupCookie(GPTModel.GPT3)}>GPT3</span>}
+      {isGPT3 ? <span className='QuestChatValidKey QuestChatClickable'>GPT3</span> : <span className='QuestChatClickable' onClick={() => _setupCookie(GPTModel.GPT3)}>GPT3</span>}
       {' / '}
-      {isGPT4 ? <span className='ChatValidKey ChatClickable'>GPT4</span> : <span className='ChatClickable' onClick={() => _setupCookie(GPTModel.GPT4)}>GPT4</span>}
+      {isGPT4 ? <span className='QuestChatValidKey QuestChatClickable'>GPT4</span> : <span className='QuestChatClickable' onClick={() => _setupCookie(GPTModel.GPT4)}>GPT4</span>}
     </span>
   )
 }

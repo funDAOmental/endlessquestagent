@@ -53,8 +53,8 @@ export const ChatRequest = ({
       <div>
         {isWaiting ?
           (previousHistory.length == 0 ?
-            <span>Starting chat with <span className='ChatTitle'>{agentName}</span>...</span>
-            : <span className='ChatInfo'>Waiting for {agentName}...</span>)
+            <span>Starting chat with <span className='QuestChatTitle'>{agentName}</span>...</span>
+            : <span className='QuestChatInfo'>Waiting for {agentName}...</span>)
           : 'got it'}
       </div>
       {error &&
