@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useMemo, useState } from 'react'
 import { ChatCompletionRequestMessageRoleEnum } from 'openai'
-import { useDocument, QuestMessagesDoc } from 'hyperbox-sdk'
+import { useDocument, QuestEncounterDoc } from 'hyperbox-sdk'
 import { ChatHistory } from '../openai/index.js'
 import { ChatRequest } from '../components/index.js'
 
@@ -118,7 +118,7 @@ export const ChatDialog = ({
       setHistory(newHistory)
       // save encounter only if user has interacted
       if (newHistory.length > 5) {
-        QuestMessagesDoc.updateMessages(store, timestamp, realmCoord, chamberSlug, playerName, newHistory)
+        QuestEncounterDoc.updateEncounter(store, timestamp, realmCoord, chamberSlug, playerName, agentName, newHistory)
       }
     }
   }
