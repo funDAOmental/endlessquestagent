@@ -73,7 +73,10 @@ export const ChatDialog = ({
       setIsHalted(true)
     } else {
       setHistory(newHistory)
-      QuestMessagesDoc.updateMessages(store, timestamp, realmCoord, chamberSlug, playerName, newHistory)
+      // save encounter only if user has interacted
+      if (newHistory.length > 5) {
+        QuestMessagesDoc.updateMessages(store, timestamp, realmCoord, chamberSlug, playerName, newHistory)
+      }
     }
   }
 
