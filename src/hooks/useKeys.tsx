@@ -1,3 +1,4 @@
+import React from 'react'
 import { useCookies } from 'react-cookie'
 import {
   Keys,
@@ -17,5 +18,5 @@ export const useKeys = () => {
     apiKeyIsOk,
     orgIdIsOk,
     keysAreOk,
-  }
+  } as const
 }

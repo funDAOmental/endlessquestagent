@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   promptMetadata,
   PromptMetadataOptions,
@@ -47,6 +47,6 @@ export const usePromptMetadata = (options: PromptMetadataOptions) => {
     metadata,
     response,
     error,
-  }
+  } as const
 }
 

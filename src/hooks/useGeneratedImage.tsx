@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   generateImage,
   ImageSize,
@@ -42,5 +42,5 @@ export const useGeneratedImage = (prompt: string | null) => {
     isWaiting,
     url,
     error,
-  }
+  } as const
 }

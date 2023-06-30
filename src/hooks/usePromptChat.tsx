@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import {
   ChatHistory,
   promptChat, PromptAgentOptions,
@@ -38,5 +38,5 @@ export const usePromptChat = (options: PromptAgentOptions) => {
     message,
     history,
     error,
-  }
+  } as const
 }
