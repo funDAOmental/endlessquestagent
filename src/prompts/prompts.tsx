@@ -131,6 +131,8 @@ NPC Behaviour mode examples:
 * Boss NPC: This is the same powerful NPC described in the world data structure. They cannot be beaten unless the PC has the key.
 * Key NPC: These are challenging and unpredictable encounters that the player must overcome to get the key. The key is the only way to beat the boss.
 
+When generating any data, do not copy any given examples, generate completely original text based on the input attributes.
+
 Respond only with "[Ready]" if you undestand this task. After I will ask for a data generation.
 `,
 
