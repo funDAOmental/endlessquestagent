@@ -5,6 +5,49 @@ import { useDocument, QuestMessagesDoc } from 'hyperbox-sdk'
 import { ChatHistory } from '../openai/index.js'
 import { ChatRequest } from '../components/index.js'
 
+export const ChatMessages = ({
+  // @ts-ignore
+  history,
+  timestamp = 0,
+  agentName = '',
+  playerName = '',
+  isHalted = false,
+}): React.JSX.Element => {
+
+  const _makeTopic = (key: string, role: ChatCompletionRequestMessageRoleEnum, content: string) => {
+    const isAgent = (role == ChatCompletionRequestMessageRoleEnum.Assistant)
+    const className = isAgent ? 'QuestChatAgentTopic' : 'QuestChatUserTopic'
+    return (
+      <div key={key} className={className}>
+        <div className='QuestChatTitle'>{isAgent ? agentName : playerName}</div>
+        <div>{content}</div>
+      </div>
+    )
+  }
+
+  const topics = useMemo(() => {
+    let result = []
+    for (let i = isHalted ? 0 : 4; i < history.length; ++i) {
+      const h = history[i]
+      if (h.content) {
+        // const isAgent = (h.role == ChatCompletionRequestMessageRoleEnum.Assistant)
+        // const className = isAgent ? 'QuestChatAgentTopic' : 'QuestChatUserTopic'
+        result.push(_makeTopic(`t_${i}`, h.role, h.content))
+      }
+    }
+    return result
+  }, [history])
+
+  return (
+    <>
+      {topics.length > 0 &&
+        <p className='QuestChatSmaller'>chat id: {timestamp}</p>
+      }
+      {topics}
+    </>
+  )
+}
+
 export const ChatDialog = ({
   // @ts-ignore
   store,
@@ -89,10 +132,13 @@ export const ChatDialog = ({
     <div className='QuestChatBody QuestChatDialog'>
 
       <div className='QuestChatContent'>
-        {topics.length > 0 &&
-          <p className='QuestChatSmaller'>chat id: {timestamp}</p>
-        }
-        {topics}
+        <ChatMessages
+          timestamp={timestamp}
+          history={history}
+          agentName={agentName}
+          playerName={playerName}
+          isHalted={isHalted}
+        />
         {isRequesting &&
           <div>
             {history.length > 0 && _makeTopic('prompt', ChatCompletionRequestMessageRoleEnum.User, prompt)}
