@@ -11,7 +11,6 @@ export const ChatMessages = ({
   timestamp = 0,
   agentName = '',
   playerName = '',
-  isHalted = false,
 }): React.JSX.Element => {
 
   const _makeTopic = (key: string, role: ChatCompletionRequestMessageRoleEnum, content: string) => {
@@ -27,7 +26,8 @@ export const ChatMessages = ({
 
   const topics = useMemo(() => {
     let result = []
-    for (let i = isHalted ? 0 : 4; i < history.length; ++i) {
+    const start = history[0]?.role === ChatCompletionRequestMessageRoleEnum.System ? 4 : 0
+    for (let i = start; i < history.length; ++i) {
       const h = history[i]
       if (h.content) {
         // const isAgent = (h.role == ChatCompletionRequestMessageRoleEnum.Assistant)
@@ -39,12 +39,12 @@ export const ChatMessages = ({
   }, [history])
 
   return (
-    <>
+    <div className='QuestChatBody'>
       {topics.length > 0 &&
         <p className='QuestChatSmaller'>chat id: {timestamp}</p>
       }
       {topics}
-    </>
+    </div>
   )
 }
 
@@ -60,14 +60,14 @@ export const ChatDialog = ({
   const [history, setHistory] = useState<ChatHistory>([])
   const [prompt, setPrompt] = useState('')
   const [isRequesting, setIsRequesting] = useState(false)
-  const [isHalted, setIsHalted] = useState(false)
+  const [isInError, setIsInError] = useState(false)
   const [timestamp, setTimestamp] = useState(0)
 
   useEffect(() => {
     if (isChatting) {
       setHistory([])
       setIsRequesting(true)
-      setIsHalted(false)
+      setIsInError(false)
       setTimestamp(Date.now())
     }
   }, [isChatting])
@@ -89,19 +89,6 @@ export const ChatDialog = ({
     )
   }
 
-  const topics = useMemo(() => {
-    let result = []
-    for (let i = isHalted ? 0 : 4; i < history.length; ++i) {
-      const h = history[i]
-      if (h.content) {
-        // const isAgent = (h.role == ChatCompletionRequestMessageRoleEnum.Assistant)
-        // const className = isAgent ? 'QuestChatAgentTopic' : 'QuestChatUserTopic'
-        result.push(_makeTopic(`t_${i}`, h.role, h.content))
-      }
-    }
-    return result
-  }, [history])
-
   const _submit = () => {
     setIsRequesting(true)
   }
@@ -113,7 +100,7 @@ export const ChatDialog = ({
       setHistory([
         { role: ChatCompletionRequestMessageRoleEnum.Assistant, content: error },
       ])
-      setIsHalted(true)
+      setIsInError(true)
     } else {
       setHistory(newHistory)
       // save encounter only if user has interacted
@@ -123,7 +110,7 @@ export const ChatDialog = ({
     }
   }
 
-  const waitingToSubmit = (!isRequesting && !isHalted)
+  const waitingToSubmit = (!isRequesting && !isInError)
   const canSubmit = (waitingToSubmit && prompt.length > 0)
 
   if (!isChatting) return <></>
@@ -137,7 +124,6 @@ export const ChatDialog = ({
           history={history}
           agentName={agentName}
           playerName={playerName}
-          isHalted={isHalted}
         />
         {isRequesting &&
           <div>
