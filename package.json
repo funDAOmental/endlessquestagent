@@ -8,10 +8,10 @@
   "type": "module",
   "scripts": {
     "prepare": "npm run build",
-    "prebuild": "rm -rf tsconfig.tsbuildinfo dist/",
-    "build": "tsc -p tsconfig.json",
-    "postbuild": "cp -R src/styles dist/",
-    "watch": "tsc -w",
+    "prebuild": "rimraf tsconfig.tsbuildinfo ./dist",
+    "build": "npx tsc -p tsconfig.json",
+    "postbuild": "copyfiles --flat --verbose src/styles/*.css ./dist/styles/",
+    "watch": "npx tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1",
     "link": "npm file:../hyperbox-sdk",
     "unlink": "npm unlink hyperbox-sdk"
@@ -26,5 +26,10 @@
     "react": "^18.2.0",
     "react-cookie": "^4.1.1",
     "universal-cookie": "^4.0.4"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6"
   }
 }
