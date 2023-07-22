@@ -18,11 +18,11 @@
   },
   "dependencies": {
     "@rsodre/crawler-data": "^0.0.7",
-    "@types/node": "^20.3.1",
-    "@types/react": "^18.2.6",
+    "@types/node": "^20.4.4",
+    "@types/react": "^18.2.15",
     "hyperbox-sdk": "github:funDAOmental/hyperbox-sdk",
     "nanoid": "^4.0.2",
-    "openai": "^3.2.1",
+    "openai": "^3.3.0",
     "react": "^18.2.0",
     "react-cookie": "^4.1.1",
     "universal-cookie": "^4.0.4"
@@ -31,5 +31,8 @@
     "copyfiles": "^2.4.1",
     "rimraf": "^5.0.1",
     "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
